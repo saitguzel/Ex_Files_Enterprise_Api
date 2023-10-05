@@ -1,0 +1,5 @@
+$cert = New-SelfSignedCertificate -CertStoreLocation cert:\currentuser\my -Subject "cn=llproductsapi.azure-api.net" -DnsName "llproductsapi.azure-api.net"
+$pass = "password"
+$pwd = ConvertTo-SecureString -String $pass -Force -AsPlainText
+$path = 'cert:\currentuser\my\' + $cert.thumbprint
+Export-PfxCertificate -cert $path -FilePath C:\exercise_files\04_03\azureapicert.pfx -Password $pwd
